@@ -5,8 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>QQ 音乐</title>
+  <link rel="stylesheet" href="./scss/app.css">
 </head>
 <body>
-  
+  <header id="header">
+    <img id="logo" src="images/logo.png" alt="logo">
+  </header>
+  <nav class="navbar">
+    <ul class="nav-list">
+      <li class="nav-item active" data-role="tab" data-view=".rec-view" >推荐</li>
+      <li class="nav-item" data-role="tab" data-view=".rank-view">排行榜</li>
+      <li class="nav-item" data-role="tab" data-view=".search-view">搜索</li>
+    </ul>
+  </nav>
+  <div class="tab-contents">
+    <div class="rec-view">
+      <div class="qq-slider" id="slider">
+        <ul class="qq-slider-wrap">
+          <li class="qq-slider-item">
+            <a href="#">
+              <img src="images/mengmian.jpg" alt="">
+            </a>
+          </li>
+          <li class="qq-slider-item">
+            <a href="#">
+              <img src="images/xingesheng.jpg" alt="">
+            </a>
+          </li>
+          <li class="qq-slider-item">
+            <a href="#">
+              <img src="images/chaoqiangyinlang.jpg" alt="">
+            </a>
+          </li>
+          <li class="qq-slider-item">
+            <a href="#">
+              <img src="images/liqin.jpg" alt="">
+            </a>
+          </li>
+          <li class="qq-slider-item">
+            <a href="#">
+              <img src="images/lvzuan.jpg" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="rank-view hide">
+      排行榜
+    </div>
+    <div class="search-view hide">
+      搜索
+    </div>
+  </div>
+
+
+  <script src="scripts/slider.js"></script>
+  <script src="scripts/app.js"></script>
+  <script src="scripts/tab.js"></script>
 </body>
 </html>
