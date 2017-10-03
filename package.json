@@ -13,11 +13,17 @@
   "keywords": [],
   "author": {
     "name": "orange",
-    "email": "775106512@qq.com" 
+    "email": "775106512@qq.com"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/woshiqiang1/qq-music/issues"
   },
-  "homepage": "https://github.com/woshiqiang1/qq-music#readme"
+  "homepage": "https://github.com/woshiqiang1/qq-music#readme",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.15.5",
+    "request": "^2.83.0",
+    "request-promise": "^4.2.2"
+  }
 }

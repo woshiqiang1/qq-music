@@ -1,3 +1,17 @@
 .hide{
   display: none;
 }
+
+.show{
+  display: block;
+}
+
+.ellipsis{
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
+}
+
+.noscroll{
+  overflow: hidden;
+}

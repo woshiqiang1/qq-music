@@ -10,6 +10,7 @@
 <body>
   <header id="header">
     <img id="logo" src="images/logo.png" alt="logo">
+    <div class="player-pull">播放器</div>
   </header>
   <nav class="navbar">
     <ul class="nav-list">
@@ -19,7 +20,7 @@
     </ul>
   </nav>
   <div class="tab-contents">
-    <div class="rec-view">
+    <div class="rec-view active" >
       <div class="qq-slider" id="slider">
         <ul class="qq-slider-wrap">
           <li class="qq-slider-item">
@@ -49,18 +50,79 @@
           </li>
         </ul>
       </div>
+      <div class="radios">
+        <h2 class="title">电台</h2>
+        <div class="list">
+
+        </div>
+      </div>
+      <div class="playlists">
+        <h2 class="title">热门歌单</h2>
+        <div class="list">
+
+        </div>
+      </div>
     </div>
-    <div class="rank-view hide">
-      排行榜
+    <div class="rank-view hide" >
+      <ul class="toplist">
+
+      </ul>
     </div>
     <div class="search-view hide">
-      搜索
+      <div class="search-bar">
+        <div class="input-wrap">
+          <input type="text" id="search" placeholder="搜索歌曲、歌单、专辑">
+          <span class="icon-search"></span>
+        </div>
+      </div>
+      <div class="search-results">
+        <ul class="song-list">
+
+        </ul>
+      </div>
+      <div class="search-loading hide">
+        <i class="loading-icon"></i>
+        <div class="loading-text">正在载入更多...</div>
+        <div class="loading-done hide">已加载全部</div>
+      </div>
     </div>
+  </div>
+  <div id="player">
+    <div class="player-container">
+      <div class="player-header">
+        <img src="" alt="" class="album-cover">
+        <div class="song-info">
+          <div class="song-name ellipsis"></div>
+          <div class="song-artist ellipsis"></div>
+        </div>
+        <span class="icon-action icon-play"></span>
+      </div>
+      <div class="player-lyrics">
+        <div class="lyrics-wrap">
+
+        </div>
+      </div>
+      <div class="player-footer">
+        <div class="icon-list"></div>
+        <div class="progress">
+
+        </div>
+        <div class="action">
+          <a href="#" class="btn-download">下载这首歌</a>
+        </div>
+      </div>
+    </div>
+    <div class="player-background"></div>
   </div>
 
 
+  <script src="scripts/lyrics_player.js"></script>
+  <script src="scripts/progress_bar.js"></script>
+  <script src="scripts/music_player.js"></script>
   <script src="scripts/slider.js"></script>
-  <script src="scripts/app.js"></script>
   <script src="scripts/tab.js"></script>
+  <script src="scripts/lazyload.js"></script>
+  <script src="scripts/search.js"></script>
+  <script src="scripts/app.js"></script>
 </body>
 </html>

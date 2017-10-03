@@ -1,0 +1,57 @@
+.rank-view {
+  margin: 10px;
+  .toplist {
+    .top-item {
+      margin-top: 10px;
+      height: 100px;
+      background: #fff;
+    }
+    .top-item-media {
+      float: left;
+      img {
+        width: 100px;
+        height: 100px;
+        display: block;
+      }
+    }
+    .top-item-info {
+      position: relative;
+      left: 5px;
+      padding: 7px 10px 6px 15px;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        margin-top: -4px;
+        width: 6px;
+        height: 6px;
+        transform: rotate(45deg);
+        border-top: 1px solid #b2b2b2;
+        border-right: 1px solid #b2b2b2;
+      }
+      .top-item-title {
+        margin: 0px 5px;
+        font-size: 16px;
+        color: #000;
+        font-weight: normal;
+      }
+      .top-item-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-top: 5px;
+        .top-item-song {
+          color: #ababab;
+          font-size: 14px;
+          .song-index{
+            font-family: Arial;
+          }
+          .song-name{
+            color: #000;
+          }
+        }
+      }
+    }
+  }
+}

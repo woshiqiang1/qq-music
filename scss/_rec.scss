@@ -1,0 +1,46 @@
+.radios,.playlists{
+  margin: 14px 0 10px 10px;
+  .title{
+    color: #000;
+    font-size: 16px;
+    margin-bottom: 11px;
+  }
+  .list{
+    display: flex;
+    flex-wrap: wrap;
+    .list-item{
+      flex: 1;
+      flex-basis: 40%;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      background: #fff;
+      .list-media{
+        position: relative;
+        height: 9rem;
+        .icon{
+          background-image: url("../images/list_sprite.png");
+          background-repeat: no-repeat;
+          background-size: 24px 60px;
+        }
+        .icon_play {
+          position: absolute;
+          width: 24px;
+          height: 24px;
+          bottom: 5px;
+          right: 5px;
+          background-position: 0 0;
+        }
+        img{
+          width: 100%;
+          display: block;
+        }
+      }
+      .list-title{
+        height: 36px;
+        margin: 7px 2px;
+        padding: 0 5px;
+      }
+    }
+  }
+}
