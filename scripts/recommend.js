@@ -33,20 +33,26 @@ export class Recommend{
         document.querySelector('.radios .list').innerHTML = radios.map(radio =>
             `<div class="list-item">
             <div class="list-media">
-              <img class="lazyload" data-src="${radio.picUrl}" alt="">
-              <span class="icon icon_play"></span>
+               <a href="#player?artist=蔡健雅&songid=145324&songname=Beautiful Love&albummid=004bsze91nxcUd&duration=295">
+                <img class="lazyload" data-src="${radio.picUrl}" alt="">
+                <div class="list-title">${radio.Ftitle}
+                    <span class="icon icon_play"></span>
+                </div>
+              </a> 
             </div>
-            <div class="list-title">${radio.Ftitle}</div>
           </div>`).join('')
     }
     renderPlaylists(playlists) {
         document.querySelector('.playlists .list').innerHTML = playlists.map(list =>
             `<div class="list-item">
-            <div class="list-media">
-              <img class="lazyload" data-src="${list.picUrl}">
-              <span class="icon icon_play"></span>
-            </div>
-            <div class="list-title">${list.songListDesc}</div>
+                <div class="list-media">
+                    <a href="#player?artist=周杰伦&songid=680279&songname=烟花易冷&albummid=000bviBl4FjTpO&duration=263">
+                        <img class="lazyload" data-src="${list.picUrl}">
+                         <div class="list-title">${list.songListDesc}
+                            <span class="icon icon_play"></span>
+                        </div>
+                    </a> 
+                 </div>
           </div>`).join('')
     }
 

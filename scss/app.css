@@ -11,30 +11,33 @@
       flex: 1;
       flex-basis: 40%;
       margin-right: 10px;
-      margin-bottom: 10px;
+      margin-bottom: 10vh;
       font-size: 14px;
       background: #fff; }
       .radios .list .list-item .list-media, .playlists .list .list-item .list-media {
         position: relative;
-        height: 9rem; }
-        .radios .list .list-item .list-media .icon, .playlists .list .list-item .list-media .icon {
-          background-image: url("../images/list_sprite.png");
-          background-repeat: no-repeat;
-          background-size: 24px 60px; }
-        .radios .list .list-item .list-media .icon_play, .playlists .list .list-item .list-media .icon_play {
-          position: absolute;
-          width: 24px;
-          height: 24px;
-          bottom: 5px;
-          right: 5px;
-          background-position: 0 0; }
+        height: 9rem;
+        margin-bottom: 2vh; }
         .radios .list .list-item .list-media img, .playlists .list .list-item .list-media img {
           width: 100%;
           display: block; }
-      .radios .list .list-item .list-title, .playlists .list .list-item .list-title {
-        height: 36px;
-        margin: 7px 2px;
-        padding: 0 5px; }
+        .radios .list .list-item .list-media .list-title, .playlists .list .list-item .list-media .list-title {
+          position: relative;
+          background-color: #fff;
+          color: #000;
+          width: 100%;
+          padding: 5px; }
+          .radios .list .list-item .list-media .list-title .icon, .playlists .list .list-item .list-media .list-title .icon {
+            background-image: url("../images/list_sprite.png");
+            background-repeat: no-repeat;
+            background-size: 24px 60px; }
+          .radios .list .list-item .list-media .list-title .icon_play, .playlists .list .list-item .list-media .list-title .icon_play {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            top: -30px;
+            right: 5px;
+            background-position: 0 0; }
 
 * {
   box-sizing: border-box;
@@ -393,7 +396,7 @@ ul, ol {
       height: 60%; }
       #player .player-container .player-lyrics .lyrics-wrap {
         margin-top: 40px;
-        height: 80%;
+        height: 78%;
         overflow: hidden; }
       #player .player-container .player-lyrics .player-lyrics-lines {
         width: 90%;
