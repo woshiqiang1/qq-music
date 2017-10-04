@@ -1,10 +1,11 @@
-class LyricsPlayer {
-    constructor(el) {
+export class LyricsPlayer {
+    constructor(el,audio) {
         this.$el = el;
         this.$el.innerHTML = `<div class="player-lyrics-lines"></div>`
         this.$lines = this.$el.querySelector('.player-lyrics-lines')
         this.LINE_HEIGHT = 42
         this.index = 0
+        this.$audio = audio
         this.lyrics = []
         this.elapsed = 0
         this.reset(this.text)
@@ -20,13 +21,13 @@ class LyricsPlayer {
     }
 
     restart(){
-        this.index = 0
+        this.reset()
         this.start()
     }
 
     update() {
-        this.elapsed += 1
-        if (this.index === this.lyrics.length - 1) return this.reset()
+        this.elapsed = Math.round(this.$audio ? this.$audio.currentTime : this.elapsed + 1)//用audio播放的事件更新歌词逝去时间
+        if (this.index === this.lyrics.length - 1) return
         for (let i = this.index + 1; i < this.lyrics.length; i++) {
             let seconds = this.getSeconds(this.lyrics[i])
             if (this.elapsed === seconds &&
@@ -53,6 +54,8 @@ class LyricsPlayer {
 
     reset(text) {
         this.pause()
+        this.index = 0
+        this.elapsed = 0
         if (text) {
             this.text = this.formatText(text) || ''
             this.lyrics = this.text.match(/^\[\d{2}:\d{2}.\d{2}\](.+)$/gm) || []//g为全局，m为多行匹配

@@ -1,4 +1,5 @@
-class Search {
+import {searchUrl} from './helpers'
+export class Search {
     constructor(el) {
         this.$el = el
         this.$input = this.$el.querySelector('#search')
@@ -6,7 +7,7 @@ class Search {
         this.$songs = this.$el.querySelector('.song-list')
         this.keyword = ''
         this.page = 1
-        this.songs = []
+        this.songs = {}
         this.perpage = 20
         this.fetching = false
         this.onscroll = this.onScroll.bind(this)
@@ -16,14 +17,13 @@ class Search {
     onKeyUp(event) {
         let keyword = event.target.value.trim()//去除两头的空格
         if(!keyword) return this.reset()
-        if (event.key != 'Enter') return
+        if (event.keyCode !== 13) return //安卓浏览器没有key，只能用keyCode
         this.search(keyword)
     }
 
     onScroll(event){
         if(this.nomore) {
-            this.done()
-            return
+            return  window.removeEventListener('scroll', this.onscroll)
         }
         if(document.documentElement.clientHeight + pageYOffset >= document.body.scrollHeight - 50){
             this.search(this.keyword,this.page + 1)
@@ -33,25 +33,28 @@ class Search {
     reset(){
         this.page = 1
         this.keyword = ''
-        this.song = []
+        this.songs = {}
+        this.nomore = false
         this.$songs.innerHTML = ''
+        this.$el.querySelector('.search-loading').classList.remove('show')
     }
 
     search(keyword,page) {
-        if(this.fetching) return
+        if(this.keyword === keyword && this.songs[page || this.page]) return
+        if(this.nomore || this.fetching) return
+        if(this.keyword !== keyword) this.reset()
         this.keyword = keyword
-        this.fetching = true
-        this.loading()
-        fetch(`http://localhost:4000/search?keyword=${this.keyword}&page=${page ||this.page}`)
+        this.loading()//loading中fetching设为true
+        fetch(searchUrl(this.keyword, page || this.page))
             .then(res => res.json())
             .then(json => {
                 this.page = json.data.song.curpage
                 this.nomore = (json.message === 'no results')
-                this.songs.push(...json.data.song.list)//rest ES6数组展开，也可以用apply传数组参数
+                this.songs[this.page] = json.data.song.list
                 return json.data.song.list
             })
             .then(songs => this.append(songs))
-            .then(this.fetching = false)
+            .then(() => this.done())//done中fetching设为false
             .catch(() => this.fetching = false)
     }
 
@@ -68,20 +71,20 @@ class Search {
     }
 
     loading(){
-        console.log(111)
         this.fetching = true
-        this.$el.querySelector('.search-loading').classList.remove('hide')
+        this.$el.querySelector('.search-loading').classList.add('show')
     }
 
     done(){
         this.fetching = false
         if(this.nomore){
-            this.$el.querySelector('.loading-icon').style.display = 'none'
-            this.$el.querySelector('.loading-text').style.display = 'none'
-            this.$el.querySelector('.loading-done').style.display = 'block'
-            this.$el.querySelector('.search-loading').classList.remove('hide')
+            console.log('end')
+            this.$el.querySelector('.loading-icon').classList.add('hide')
+            this.$el.querySelector('.loading-text').classList.add('hide')
+            this.$el.querySelector('.loading-done').classList.add('show')
+            this.$el.querySelector('.search-loading').classList.add('show')
         }else{
-            this.$el.querySelector('.search-loading').classList.add('hide')
+            this.$el.querySelector('.search-loading').classList.remove('show')
         }
     }
 

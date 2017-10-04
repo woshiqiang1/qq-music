@@ -1,6 +1,6 @@
- class Slider{
+ export class Slider{
     constructor(options = {}){
-        this.$el = options.$el
+        this.$el = options.el
         this.slides = options.slides
         this.interval = options.interval || 3000
         this.index = 0
