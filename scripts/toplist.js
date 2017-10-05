@@ -14,7 +14,7 @@ export class TopList {
     }
 
     renderTopList(list) {
-        this.$el.querySelector('.rank-view .toplist').innerHTML = list.map(item =>
+        this.$el.querySelector('#rank-view .toplist').innerHTML = list.map(item =>
             `<li class="top-item">
           <div class="top-item-media">
             <a href="#">

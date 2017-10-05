@@ -5,9 +5,9 @@ import {Search} from './search'
 import {MusicPlayer} from './music_player'
 
 
-let recommend = new Recommend(document.querySelector('.rec-view')).launch()
-let topList = new TopList(document.querySelector('.rank-view')).launch()
-let search = new Search(document.querySelector('.search-view '))
+let recommend = new Recommend(document.querySelector('#rec-view')).launch()
+let topList = new TopList(document.querySelector('#rank-view')).launch()
+let search = new Search(document.querySelector('#search-view '))
 let player = new MusicPlayer(document.querySelector('#player'))
 
 //给播放器按键绑定事件

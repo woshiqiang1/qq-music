@@ -216,9 +216,9 @@ var _search = __webpack_require__(8);
 
 var _music_player = __webpack_require__(9);
 
-var recommend = new _recommend.Recommend(document.querySelector('.rec-view')).launch();
-var topList = new _toplist.TopList(document.querySelector('.rank-view')).launch();
-var search = new _search.Search(document.querySelector('.search-view '));
+var recommend = new _recommend.Recommend(document.querySelector('#rec-view')).launch();
+var topList = new _toplist.TopList(document.querySelector('#rank-view')).launch();
+var search = new _search.Search(document.querySelector('#search-view '));
 var player = new _music_player.MusicPlayer(document.querySelector('#player'));
 
 //给播放器按键绑定事件
@@ -254,16 +254,6 @@ function onHashChange() {
 
 "use strict";
 
-
-// document.addEventListener('click',(e)=>{
-//     if (e.target.getAttribute('data-role') !== 'tab') return
-//     let target = e.target;
-//     [].forEach.call(target.parentElement.children,(item)=> item.classList.remove('active'))
-//     target.classList.add('active')
-//     let targetContent = document.querySelector(target.dataset.view);
-//     [].forEach.call(targetContent.parentElement.children,(item)=>item.classList.add('hide'))
-//     targetContent.classList.remove('hide')
-// })
 
 document.addEventListener('click', function (event) {
 
@@ -476,7 +466,7 @@ var TopList = exports.TopList = function () {
         value: function renderTopList(list) {
             var _this2 = this;
 
-            this.$el.querySelector('.rank-view .toplist').innerHTML = list.map(function (item) {
+            this.$el.querySelector('#rank-view .toplist').innerHTML = list.map(function (item) {
                 return '<li class="top-item">\n          <div class="top-item-media">\n            <a href="#">\n              <img class="lazyload" data-src="' + item.picUrl + '">\n            </a>\n          </div>\n          <div class="top-item-info">\n            <h3 class="top-item-title ellipsis">' + item.topTitle + '</h3>\n            <ul class="top-item-list">\n             ' + _this2.renderSonglist(item.songList) + '\n            </ul>\n          </div>\n        </li>';
             }).join('');
 
