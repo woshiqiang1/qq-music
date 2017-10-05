@@ -29,7 +29,7 @@ function onHashChange() {
         let matches = hash.slice(hash.indexOf('?') + 1).match(/(\w+)=([^&]+)/g)
         let options = matches && matches.reduce((res, cur) => {
             let arr = cur.split('=')
-            res[arr[0]] = decodeURIComponent(arr[1])//避免手机浏览器中文出现乱码 
+            res[arr[0]] = decodeURIComponent(arr[1])//避免手机浏览器中文出现乱码
             return res
         }, {})
         player.play(options)

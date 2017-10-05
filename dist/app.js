@@ -233,7 +233,7 @@ function onHashChange() {
         var matches = hash.slice(hash.indexOf('?') + 1).match(/(\w+)=([^&]+)/g);
         var options = matches && matches.reduce(function (res, cur) {
             var arr = cur.split('=');
-            res[arr[0]] = decodeURIComponent(arr[1]); //避免手机浏览器中文出现乱码 
+            res[arr[0]] = decodeURIComponent(arr[1]); //避免手机浏览器中文出现乱码
             return res;
         }, {});
         player.play(options);
@@ -249,18 +249,25 @@ function onHashChange() {
 "use strict";
 
 
-document.addEventListener('click', function (e) {
-    if (e.target.getAttribute('data-role') !== 'tab') return;
-    var target = e.target;
-    [].forEach.call(target.parentElement.children, function (item) {
-        return item.classList.remove('active');
+document.addEventListener('click', function (event) {
+
+    var target = event.target;
+
+    if (target.dataset.role !== 'tab') return;
+
+    [].forEach.call(target.parentElement.children, function (tab) {
+        tab.classList.remove('active');
     });
     target.classList.add('active');
-    var targetContent = document.querySelector(target.dataset.view);
-    [].forEach.call(targetContent.parentElement.children, function (item) {
-        return item.classList.add('hide');
-    });
-    targetContent.classList.remove('hide');
+
+    var content = document.querySelector(target.dataset.view);
+
+    if (content) {
+        [].forEach.call(content.parentElement.children, function (child) {
+            child.style.display = 'none';
+        });
+        content.style.display = 'block';
+    }
 });
 
 /***/ }),
