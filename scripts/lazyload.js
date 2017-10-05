@@ -29,11 +29,6 @@ export function lazyload(images) {
         window.dispatchEvent(new Event('scroll')) //自己触发一次滚动事件，让视窗可见的图片加载。
     }
 
-
-
-
-
-
     function inViewport(img) {
         let {top, left, right, bottom} = img.getBoundingClientRect()
         let vpWidth = document.documentElement.clientWidth
@@ -44,8 +39,14 @@ export function lazyload(images) {
 
     }
 
-    function loadImage(img) {
-        img.src = img.dataset.src
+    function loadImage(img, callback) {
+        let image = new Image()
+        image.src = img.dataset.src
+        image.onload = function() {
+            img.src = image.src
+            img.classList.remove('lazyload')
+            if (typeof callback === 'function') callback()
+        }
     }
 }
 
