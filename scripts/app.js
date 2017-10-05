@@ -13,8 +13,7 @@ let player = new MusicPlayer(document.querySelector('#player'))
 //给播放器按键绑定事件
 let playerPull = document.querySelector('#header .player-pull')
 playerPull.addEventListener('click', (event) => {
-    document.querySelector('#player').classList.add('show')
-    document.body.classList.add('noscroll')
+    player.show()
 })
 
 onHashChange()//页面刷新立即读入参数
@@ -22,8 +21,7 @@ window.addEventListener('hashchange', onHashChange)
 
 
 function onHashChange() {
-    document.body.scrollTop = 0
-    document.body.classList.add('noscroll')
+    player.show()
     let hash = location.hash
     if (/^#player\?.+/.test(hash)) {
         let matches = hash.slice(hash.indexOf('?') + 1).match(/(\w+)=([^&]+)/g)
