@@ -1,49 +1,52 @@
-.radios,.playlists{
-  margin: 14px 0 10px 10px;
-  .title{
+.radios, .playlists {
+  margin: 14px 2px 0 10px;
+  .title {
     color: #000;
     font-size: 16px;
     margin-bottom: 11px;
   }
-  .list{
+  .list {
     display: flex;
     flex-wrap: wrap;
-    .list-item{
+    .list-item {
       flex: 1;
       flex-basis: 40%;
-      margin-right: 10px;
-      margin-bottom: 10vh;
-      font-size: 14px;
       background: #fff;
-      .list-media{
+      margin-right: 8px;
+      margin-bottom: 10px;
+      .list-media {
         position: relative;
-        height: 9rem;
-        margin-bottom: 2vh;
-        img{
-          width: 100%;
-          display: block;
-        }
-        .list-title{
-          position: relative;
-          background-color: #fff;
-          color: #000;
-          width: 100%;
-          padding: 5px;
-          .icon{
-            background-image: url("../images/list_sprite.png");
-            background-repeat: no-repeat;
-            background-size: 24px 60px;
-          }
-          .icon_play {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            top: -30px;
-            right: 5px;
-            background-position: 0 0;
-          }
-        }
+        margin-bottom: 5px;
+      }
+      .list-detail {
+        padding: 0 7px 5px;
+      }
+      .list-title {
+        font-size: 14px;
+        font-weight: normal;
+      }
+      .icon {
+        background-repeat: no-repeat;
+        background-size: 24px 60px;
+        background-image: url('../images/list_sprite.png');
+      }
+      .icon-play {
+        height: 24px;
+        bottom: 5px;
+        right: 5px;
+        width: 24px;
+        position: absolute;
+        background-position: 0 0;
+      }
+      img {
+        width: 100%;
+        display: block;
+        min-height: 145px;
       }
     }
   }
+}
+
+.radios .list-title {
+  height: 36px;
 }

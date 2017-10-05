@@ -1,5 +1,5 @@
 .radios, .playlists {
-  margin: 14px 0 10px 10px; }
+  margin: 14px 2px 0 10px; }
   .radios .title, .playlists .title {
     color: #000;
     font-size: 16px;
@@ -10,34 +10,35 @@
     .radios .list .list-item, .playlists .list .list-item {
       flex: 1;
       flex-basis: 40%;
-      margin-right: 10px;
-      margin-bottom: 10vh;
-      font-size: 14px;
-      background: #fff; }
+      background: #fff;
+      margin-right: 8px;
+      margin-bottom: 10px; }
       .radios .list .list-item .list-media, .playlists .list .list-item .list-media {
         position: relative;
-        height: 9rem;
-        margin-bottom: 2vh; }
-        .radios .list .list-item .list-media img, .playlists .list .list-item .list-media img {
-          width: 100%;
-          display: block; }
-        .radios .list .list-item .list-media .list-title, .playlists .list .list-item .list-media .list-title {
-          position: relative;
-          background-color: #fff;
-          color: #000;
-          width: 100%;
-          padding: 5px; }
-          .radios .list .list-item .list-media .list-title .icon, .playlists .list .list-item .list-media .list-title .icon {
-            background-image: url("../images/list_sprite.png");
-            background-repeat: no-repeat;
-            background-size: 24px 60px; }
-          .radios .list .list-item .list-media .list-title .icon_play, .playlists .list .list-item .list-media .list-title .icon_play {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            top: -30px;
-            right: 5px;
-            background-position: 0 0; }
+        margin-bottom: 5px; }
+      .radios .list .list-item .list-detail, .playlists .list .list-item .list-detail {
+        padding: 0 7px 5px; }
+      .radios .list .list-item .list-title, .playlists .list .list-item .list-title {
+        font-size: 14px;
+        font-weight: normal; }
+      .radios .list .list-item .icon, .playlists .list .list-item .icon {
+        background-repeat: no-repeat;
+        background-size: 24px 60px;
+        background-image: url("../images/list_sprite.png"); }
+      .radios .list .list-item .icon-play, .playlists .list .list-item .icon-play {
+        height: 24px;
+        bottom: 5px;
+        right: 5px;
+        width: 24px;
+        position: absolute;
+        background-position: 0 0; }
+      .radios .list .list-item img, .playlists .list .list-item img {
+        width: 100%;
+        display: block;
+        min-height: 145px; }
+
+.radios .list-title {
+  height: 36px; }
 
 * {
   box-sizing: border-box;
