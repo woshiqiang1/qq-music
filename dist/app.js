@@ -333,10 +333,12 @@ var Recommend = exports.Recommend = function () {
     }, {
         key: 'renderSlider',
         value: function renderSlider(slides) {
-            new _slider.Slider({
-                el: document.querySelector('#slider'),
+            this.slider = new _slider.Slider({
+                el: this.$el.querySelector('#slider'),
                 slides: slides.map(function (slide) {
-                    return { link: slide.linkUrl, image: slide.picUrl.replace('http://', 'https://') //把http换成https放在github警告
+                    return {
+                        link: slide.linkUrl.replace('http://', 'https://'),
+                        image: slide.picUrl.replace('http://', 'https://') //把http换成https防止github报错
                     };
                 })
             });
@@ -344,7 +346,7 @@ var Recommend = exports.Recommend = function () {
     }, {
         key: 'renderRadios',
         value: function renderRadios(radios) {
-            document.querySelector('.radios .list').innerHTML = radios.map(function (radio) {
+            this.$el.querySelector('.radios .list').innerHTML = radios.map(function (radio) {
                 return '<div class="list-item">\n            <div class="list-media">\n               <a href="#player?artist=\u8521\u5065\u96C5&songid=145324&songname=Beautiful Love&albummid=004bsze91nxcUd&duration=295">\n                <img class="lazyload" data-src="' + radio.picUrl + '" alt="">\n                <div class="list-title">' + radio.Ftitle + '\n                    <span class="icon icon_play"></span>\n                </div>\n              </a> \n            </div>\n          </div>';
             }).join('');
         }
@@ -678,32 +680,30 @@ var MusicPlayer = exports.MusicPlayer = function () {
     }, {
         key: 'onPlay',
         value: function onPlay(event) {
+            if (this.fetching) return; //未加载完不许播放
             this.$audio.play();
+            this.lyrics.start();
+            this.progress.start();
             event.target.classList.add('icon-pause');
             event.target.classList.remove('icon-play');
-            this.progress.start();
-            this.lyrics.start();
         }
     }, {
         key: 'onPause',
         value: function onPause(event) {
             this.$audio.pause();
+            this.lyrics.pause();
+            this.progress.pause();
             event.target.classList.add('icon-play');
             event.target.classList.remove('icon-pause');
-            this.progress.pause();
-            this.lyrics.pause();
         }
     }, {
         key: 'play',
-        value: function play(options) {
+        value: function play() {
             var _this2 = this;
 
+            var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
             if (!options) return;
-            if (this.$el.querySelector('.icon-pause')) {
-                console.log(1);
-                this.$el.querySelector('.icon-action').classList.add('icon-play');
-                this.$el.querySelector('.icon-action').classList.remove('icon-pause');
-            }
 
             this.$el.querySelector('.song-name').innerText = options.songname;
             this.$el.querySelector('.song-artist').innerText = options.artist;
@@ -714,15 +714,22 @@ var MusicPlayer = exports.MusicPlayer = function () {
             this.$el.querySelector('.player-background').style.backgroundImage = 'url(' + url + ')';
 
             if (options.songid) {
+                if (this.songid !== options.songid) {
+                    this.$el.querySelector('.icon-action').classList.add('icon-play');
+                    this.$el.querySelector('.icon-action').classList.remove('icon-pause');
+                }
                 this.songid = options.songid;
                 this.$audio.src = (0, _helpers.songUrl)(this.songid);
+                this.fetching = true;
                 fetch((0, _helpers.lyricsUrl)(this.songid)).then(function (res) {
                     return res.json();
                 }).then(function (json) {
                     return json.lyric;
                 }).then(function (text) {
                     return _this2.lyrics.reset(text);
-                }).catch(function () {});
+                }).catch(function () {}).then(function () {
+                    return _this2.fetching = false;
+                });
             }
             this.show();
         }
@@ -730,6 +737,7 @@ var MusicPlayer = exports.MusicPlayer = function () {
         key: 'show',
         value: function show() {
             this.$el.classList.add('show');
+            document.body.classList.add('noscroll');
         }
     }, {
         key: 'hide',
@@ -886,6 +894,7 @@ var ProgressBar = exports.ProgressBar = function () {
     _createClass(ProgressBar, [{
         key: 'start',
         value: function start() {
+            this.pause(); //清空计数
             this.intervalId = setInterval(this.update.bind(this), 50);
         }
     }, {
@@ -908,6 +917,8 @@ var ProgressBar = exports.ProgressBar = function () {
             this.pause();
             this.elapsed = 0;
             this.progress = 0;
+            this.$progress.style.transform = 'translate(-100%)'; //还原进度条
+            this.$elapsed.innerText = this.formatTime(this.elapsed); //还原计数
             if (duration) {
                 this.duration = +duration;
                 this.$duration.innerText = this.formatTime(this.duration);

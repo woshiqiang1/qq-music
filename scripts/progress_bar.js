@@ -14,6 +14,7 @@ export class ProgressBar {
     }
 
     start() {
+        this.pause()//清空计数
         this.intervalId = setInterval(this.update.bind(this), 50)
     }
 
@@ -33,6 +34,8 @@ export class ProgressBar {
         this.pause()
         this.elapsed = 0
         this.progress = 0
+        this.$progress.style.transform = `translate(-100%)`//还原进度条
+        this.$elapsed.innerText = this.formatTime(this.elapsed)//还原计数
         if (duration) {
             this.duration = +duration
             this.$duration.innerText = this.formatTime(this.duration)

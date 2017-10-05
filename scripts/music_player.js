@@ -39,30 +39,28 @@ export class MusicPlayer {
     }
 
     onPlay(event) {
+        if (this.fetching) return //未加载完不许播放
         this.$audio.play()
+        this.lyrics.start()
+        this.progress.start()
         event.target.classList.add('icon-pause')
         event.target.classList.remove('icon-play')
-        this.progress.start()
-        this.lyrics.start()
+
+
 
     }
 
     onPause(event) {
         this.$audio.pause()
+        this.lyrics.pause()
+        this.progress.pause()
         event.target.classList.add('icon-play')
         event.target.classList.remove('icon-pause')
-        this.progress.pause()
-        this.lyrics.pause()
     }
 
 
-    play(options) {
+    play(options = {}) {
         if (!options) return
-        if(this.$el.querySelector('.icon-pause')){
-            console.log(1)
-            this.$el.querySelector('.icon-action').classList.add('icon-play')
-            this.$el.querySelector('.icon-action').classList.remove('icon-pause')
-        }
 
         this.$el.querySelector('.song-name').innerText = options.songname
         this.$el.querySelector('.song-artist').innerText = options.artist
@@ -73,20 +71,26 @@ export class MusicPlayer {
         this.$el.querySelector('.player-background').style.backgroundImage = `url(${url})`
 
         if (options.songid) {
+            if(this.songid !== options.songid){
+                this.$el.querySelector('.icon-action').classList.add('icon-play')
+                this.$el.querySelector('.icon-action').classList.remove('icon-pause')
+            }
             this.songid = options.songid
             this.$audio.src = songUrl(this.songid)
+            this.fetching = true
             fetch(lyricsUrl(this.songid))
                 .then(res => res.json())
                 .then(json => json.lyric)
                 .then(text => this.lyrics.reset(text))
-                .catch(() => {
-                })
+                .catch(() => {})
+                .then(() => this.fetching = false)
         }
         this.show()
     }
 
     show() {
         this.$el.classList.add('show')
+        document.body.classList.add('noscroll')
     }
 
     hide() {

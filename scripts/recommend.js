@@ -21,16 +21,17 @@ export class Recommend{
     }
 
     renderSlider(slides) {
-        new Slider({
-            el: document.querySelector('#slider'),
-            slides: slides.map(slide => {
-                return {link: slide.linkUrl, image: slide.picUrl.replace('http://', 'https://')}//把http换成https放在github警告
-            })
+        this.slider = new Slider({
+            el: this.$el.querySelector('#slider'),
+            slides: slides.map(slide => ({
+                link: slide.linkUrl.replace('http://', 'https://'),
+                image: slide.picUrl.replace('http://', 'https://')//把http换成https防止github报错
+            }))
         })
     }
 
     renderRadios(radios) {
-        document.querySelector('.radios .list').innerHTML = radios.map(radio =>
+        this.$el.querySelector('.radios .list').innerHTML = radios.map(radio =>
             `<div class="list-item">
             <div class="list-media">
                <a href="#player?artist=蔡健雅&songid=145324&songname=Beautiful Love&albummid=004bsze91nxcUd&duration=295">
@@ -55,5 +56,4 @@ export class Recommend{
                  </div>
           </div>`).join('')
     }
-
 }
