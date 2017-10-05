@@ -290,11 +290,11 @@ exports.Recommend = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _constant = __webpack_require__(0);
+var _slider = __webpack_require__(6);
 
 var _lazyload = __webpack_require__(1);
 
-var _slider = __webpack_require__(6);
+var _constant = __webpack_require__(0);
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -310,19 +310,18 @@ var Recommend = exports.Recommend = function () {
         value: function launch() {
             var _this = this;
 
-            fetch(_constant.RECOMMEND_URL) //./json/rec.json本地数据
-            .then(function (res) {
+            fetch(_constant.RECOMMEND_URL).then(function (res) {
                 return res.json();
             }).then(function (json) {
                 return _this.json = json;
             }).then(function () {
                 return _this.render();
             });
-            return this; //保存实例
+            return this;
         }
     }, {
         key: 'render',
-        value: function render(json) {
+        value: function render() {
             this.renderSlider(this.json.data.slider);
             this.renderRadios(this.json.data.radioList);
             this.renderPlayLists(this.json.data.songList);
@@ -336,7 +335,7 @@ var Recommend = exports.Recommend = function () {
                 slides: slides.map(function (slide) {
                     return {
                         link: slide.linkUrl.replace('http://', 'https://'),
-                        image: slide.picUrl.replace('http://', 'https://') //把http换成https防止github报错
+                        image: slide.picUrl.replace('http://', 'https://')
                     };
                 })
             });
@@ -345,14 +344,14 @@ var Recommend = exports.Recommend = function () {
         key: 'renderRadios',
         value: function renderRadios(radios) {
             this.$el.querySelector('.radios .list').innerHTML = radios.map(function (radio) {
-                return '<div class="list-item">\n            <div class="list-media">\n               <a href="#player?artist=\u8521\u5065\u96C5&songid=145324&songname=Beautiful Love&albummid=004bsze91nxcUd&duration=295">\n                <img class="lazyload" data-src="' + radio.picUrl + '" alt="">\n                <div class="list-title">' + radio.Ftitle + '\n                    <span class="icon icon_play"></span>\n                </div>\n              </a> \n            </div>\n          </div>';
+                return '<div class="list-item">\n        <div class="list-media">\n          <img class="lazyload" data-src="' + radio.picUrl + '">\n          <span class="icon icon-play"></span>\n        </div>\n        <div class="list-detail">\n          <h3 class="list-title">' + radio.Ftitle + '</h3>\n        </div>\n      </div>';
             }).join('');
         }
     }, {
         key: 'renderPlayLists',
         value: function renderPlayLists(playlists) {
-            document.querySelector('.playlists .list').innerHTML = playlists.map(function (list) {
-                return '<div class="list-item">\n                <div class="list-media">\n                    <a href="#player?artist=\u5468\u6770\u4F26&songid=680279&songname=\u70DF\u82B1\u6613\u51B7&albummid=000bviBl4FjTpO&duration=263">\n                        <img class="lazyload" data-src="' + list.picUrl + '">\n                         <div class="list-title">' + list.songListDesc + '\n                            <span class="icon icon_play"></span>\n                        </div>\n                    </a> \n                 </div>\n          </div>';
+            this.$el.querySelector('.playlists .list').innerHTML = playlists.map(function (list) {
+                return '<div class="list-item">\n        <div class="list-media">\n          <img class="lazyload" data-src="' + list.picUrl + '">\n          <span class="icon icon-play"></span>\n        </div>\n        <div class="list-detail">\n          <h3 class="list-title">' + list.songListDesc + '</h3>\n          <div class="list-text"></div>\n        </div>\n      </div>';
             }).join('');
         }
     }]);
