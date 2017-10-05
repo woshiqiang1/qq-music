@@ -9,14 +9,15 @@ export class Recommend{
     launch(){
         fetch(RECOMMEND_URL)//./json/rec.json本地数据
             .then(res => res.json())
-            .then(json => this.render(json))
+            .then(json => this.json = json)
+            .then(() => this.render())
         return this//保存实例
     }
 
     render(json){
-        this.renderSlider(json.data.slider)
-        this.renderRadios(json.data.radioList)
-        this.renderPlaylists(json.data.songList)
+        this.renderSlider(this.json.data.slider)
+        this.renderRadios(this.json.data.radioList)
+        this.renderPlayLists(this.json.data.songList)
         lazyload()
     }
 
@@ -43,7 +44,7 @@ export class Recommend{
             </div>
           </div>`).join('')
     }
-    renderPlaylists(playlists) {
+    renderPlayLists(playlists) {
         document.querySelector('.playlists .list').innerHTML = playlists.map(list =>
             `<div class="list-item">
                 <div class="list-media">
