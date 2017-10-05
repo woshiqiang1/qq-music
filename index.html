@@ -14,13 +14,13 @@
   </header>
   <nav class="navbar">
     <ul class="nav-list">
-      <li class="nav-item active" data-role="tab" data-view="#rec-view" >推荐</li>
+      <li class="nav-item" data-role="tab" data-view="#rec-view" >推荐</li>
       <li class="nav-item" data-role="tab" data-view="#rank-view">排行榜</li>
-      <li class="nav-item" data-role="tab" data-view="#search-view">搜索</li>
+      <li class="nav-item active" data-role="tab" data-view="#search-view">搜索</li>
     </ul>
   </nav>
   <div class="tab-contents">
-    <div id="rec-view" >
+    <div id="rec-view" class="hide" >
       <div class="qq-slider" id="slider">
         <ul class="qq-slider-wrap">
           <li class="qq-slider-item">
@@ -68,7 +68,7 @@
 
       </ul>
     </div>
-    <div id="search-view" class="hide">
+    <div id="search-view" >
       <div class="search-bar">
         <div class="input-wrap">
           <input type="text" id="search" placeholder="搜索歌曲、歌单、专辑">
