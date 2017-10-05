@@ -457,17 +457,19 @@ var TopList = exports.TopList = function () {
             .then(function (res) {
                 return res.json();
             }).then(function (json) {
-                return _this.renderTopList(json.data.topList);
+                return _this.list = json.data.topList;
+            }).then(function () {
+                return _this.render();
             });
             return this;
         }
     }, {
-        key: 'renderTopList',
-        value: function renderTopList(list) {
+        key: 'render',
+        value: function render() {
             var _this2 = this;
 
-            this.$el.querySelector('#rank-view .toplist').innerHTML = list.map(function (item) {
-                return '<li class="top-item">\n          <div class="top-item-media">\n            <a href="#">\n              <img class="lazyload" data-src="' + item.picUrl + '">\n            </a>\n          </div>\n          <div class="top-item-info">\n            <h3 class="top-item-title ellipsis">' + item.topTitle + '</h3>\n            <ul class="top-item-list">\n             ' + _this2.renderSonglist(item.songList) + '\n            </ul>\n          </div>\n        </li>';
+            this.$el.querySelector('#rank-view .toplist').innerHTML = this.list.map(function (item) {
+                return '<li class="top-item">\n          <div class="top-item-media">\n            <a href="#">\n              <img class="lazyload" data-src="' + item.picUrl.replace('http://', 'https://') + '">\n            </a>\n          </div>\n          <div class="top-item-info">\n            <h3 class="top-item-title ellipsis">' + item.topTitle + '</h3>\n            <ul class="top-item-list">\n             ' + _this2.renderSonglist(item.songList) + '\n            </ul>\n          </div>\n        </li>';
             }).join('');
 
             (0, _lazyload.lazyload)(this.$el.querySelectorAll('.lazyload')); //应为异步需要把lazyload写在里面

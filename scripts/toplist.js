@@ -9,16 +9,17 @@ export class TopList {
     launch() {
         fetch(TOPLIST_URL)//./json/rank.json本地数据
             .then(res => res.json())
-            .then(json => this.renderTopList(json.data.topList))
+            .then(json => this.list = json.data.topList)
+            .then(() => this.render())
         return this
     }
 
-    renderTopList(list) {
-        this.$el.querySelector('#rank-view .toplist').innerHTML = list.map(item =>
+    render() {
+        this.$el.querySelector('#rank-view .toplist').innerHTML = this.list.map(item =>
             `<li class="top-item">
           <div class="top-item-media">
             <a href="#">
-              <img class="lazyload" data-src="${item.picUrl}">
+              <img class="lazyload" data-src="${item.picUrl.replace('http://', 'https://')}">
             </a>
           </div>
           <div class="top-item-info">
