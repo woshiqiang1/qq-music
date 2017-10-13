@@ -465,7 +465,7 @@ ul, ol {
     background-size: cover; }
   #player .action {
     width: 100%;
-    margin-top: 20px;
+    margin-top: -20px;
     text-align: center; }
     #player .action .qq-logo {
       position: relative;
