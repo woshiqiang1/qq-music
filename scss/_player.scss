@@ -129,7 +129,7 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%);
-        background-color: #ccc;
+        background-color: rgba(255,255,255,0.3);
         overflow: hidden;
         .progress-bar-progress{
           height: 2px;
@@ -157,7 +157,6 @@
     .icon-list{
       position: absolute;
       right: 50px;
-
       height: 18px;
       width: 24px;
       background-image: url('../images/icon_list.gif');
@@ -169,6 +168,16 @@
       width: 100%;
       margin-top: 20px;
       text-align: center;
+      .qq-logo{
+        position: relative;
+        top: 40px;
+        left: 60px;
+        display: block;
+        width: 35px;
+        height: 35px;
+        background: url(../images/qq_logo.png) center center no-repeat;
+        background-size: cover;
+      }
       .btn-download{
         display: inline-block;
         width: 220px;
@@ -178,8 +187,9 @@
         color: #fff;
         font-size: 20px;
         line-height: 45px;
-        vertical-align: middle;
+        vertical-align: top;
       }
+
     }
   }
 

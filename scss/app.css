@@ -40,6 +40,21 @@
 .radios .list-title {
   height: 36px; }
 
+#rec-view .footer {
+  width: 100%;
+  text-align: center;
+  padding: 5px; }
+  #rec-view .footer .footer-logo {
+    display: inline-block;
+    width: 82px;
+    height: 24px;
+    background: url(../images/logo_footer.png) center center no-repeat;
+    background-size: cover; }
+  #rec-view .footer .notice {
+    margin: 10px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.5); }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -422,7 +437,7 @@ ul, ol {
         position: absolute;
         left: 50%;
         transform: translate(-50%);
-        background-color: #ccc;
+        background-color: rgba(255, 255, 255, 0.3);
         overflow: hidden; }
         #player .player-container .progress .progress-bar .progress-bar-progress {
           height: 2px;
@@ -452,6 +467,15 @@ ul, ol {
     width: 100%;
     margin-top: 20px;
     text-align: center; }
+    #player .action .qq-logo {
+      position: relative;
+      top: 40px;
+      left: 60px;
+      display: block;
+      width: 35px;
+      height: 35px;
+      background: url(../images/qq_logo.png) center center no-repeat;
+      background-size: cover; }
     #player .action .btn-download {
       display: inline-block;
       width: 220px;
@@ -461,7 +485,7 @@ ul, ol {
       color: #fff;
       font-size: 20px;
       line-height: 45px;
-      vertical-align: middle; }
+      vertical-align: top; }
 
 .player-background {
   background: url(https://y.gtimg.cn/music/photo_new/T002R150x150M000004bsze91nxcUd.jpg?max_age=2592000);

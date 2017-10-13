@@ -50,3 +50,22 @@
 .radios .list-title {
   height: 36px;
 }
+#rec-view{
+  .footer{
+    width: 100%;
+    text-align: center;
+    padding: 5px;
+    .footer-logo{
+      display: inline-block;
+      width: 82px;
+      height: 24px;
+      background: url(../images/logo_footer.png) center center no-repeat;
+      background-size: cover;
+    }
+    .notice{
+      margin: 10px;
+      font-size: 12px;
+      color: rgba(0,0,0,.5);
+    }
+  }
+}
