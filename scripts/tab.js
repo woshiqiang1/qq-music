@@ -18,5 +18,7 @@ document.addEventListener('click', function(event) {
         content.style.display = 'block'
     }
 
+    window.dispatchEvent(new Event('scroll'))
+
 })
 
