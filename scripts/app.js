@@ -17,12 +17,12 @@ playerPull.addEventListener('click', (event) => {
 })
 
 onHashChange()//页面刷新立即读入参数
-window.addEventListener('hashchange', onHashChange)
+addEventListener('hashchange', onHashChange)
 
 
 function onHashChange() {
-    player.show()
     let hash = location.hash
+    console.log(hash)
     if (/^#player\?.+/.test(hash)) {
         let matches = hash.slice(hash.indexOf('?') + 1).match(/(\w+)=([^&]+)/g)
         let options = matches && matches.reduce((res, cur) => {

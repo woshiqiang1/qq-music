@@ -85,6 +85,7 @@ export class MusicPlayer {
                 .catch(() => {})
                 .then(() => this.fetching = false)
         }
+        window.scrollY = 0
         this.show()
     }
 
@@ -97,6 +98,4 @@ export class MusicPlayer {
         this.$el.classList.remove('show')
         document.body.classList.remove('noscroll')
     }
-
-
 }
