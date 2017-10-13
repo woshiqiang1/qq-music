@@ -9,6 +9,7 @@ export class MusicPlayer {
         this.$audio = this.createAudio()
         this.lyrics = new LyricsPlayer(this.$el.querySelector('.player-lyrics .lyrics-wrap'), this.$audio)
         this.progress = new ProgressBar(this.$el.querySelector('.progress'), 180, true)
+        this.fetching = false
     }
 
     createAudio() {
@@ -17,7 +18,7 @@ export class MusicPlayer {
         audio.addEventListener('ended', () => {
             this.$audio.play()
             this.lyrics.restart()
-            this.progress.start()
+            this.progress.restart()
         })
         document.body.appendChild(audio)
         return audio
@@ -85,7 +86,6 @@ export class MusicPlayer {
                 .catch(() => {})
                 .then(() => this.fetching = false)
         }
-        window.scrollY = 0
         this.show()
     }
 

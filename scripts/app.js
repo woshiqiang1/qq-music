@@ -12,22 +12,21 @@ let player = new MusicPlayer(document.querySelector('#player'))
 
 //给播放器按键绑定事件
 let playerPull = document.querySelector('#header .player-pull')
-playerPull.addEventListener('click', (event) => {
+playerPull.addEventListener('click', () => {
     player.show()
 })
 
 onHashChange()//页面刷新立即读入参数
-window.addEventListener('hashchange', onHashChange)
+addEventListener('hashchange', onHashChange)
 
 
 function onHashChange() {
     let hash = location.hash
-    console.log(hash)
     if (/^#player\?.+/.test(hash)) {
         let matches = hash.slice(hash.indexOf('?') + 1).match(/(\w+)=([^&]+)/g)
         let options = matches && matches.reduce((res, cur) => {
             let arr = cur.split('=')
-            res[arr[0]] = decodeURIComponent(arr[1])//避免手机浏览器中文出现乱码
+            res[arr[0]] = decodeURIComponent(arr[1])
             return res
         }, {})
         player.play(options)
@@ -35,6 +34,7 @@ function onHashChange() {
         player.hide()
     }
 }
+
 
 
 

@@ -310,10 +310,9 @@ ul, ol {
   99.99% {
     transform: rotate(330deg); } }
 #player {
-  position: absolute;
+  position: fixed;
   height: 100%;
   top: 0;
-  bottom: 0;
   left: 0;
   right: 0;
   z-index: 9;
