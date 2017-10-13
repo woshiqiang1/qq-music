@@ -166,19 +166,10 @@
     }
     .action{
       width: 100%;
-      margin-top: -20px;
       text-align: center;
-      .qq-logo{
-        position: relative;
-        top: 40px;
-        left: 60px;
-        display: block;
-        width: 35px;
-        height: 35px;
-        background: url(../images/qq_logo.png) center center no-repeat;
-        background-size: cover;
-      }
       .btn-download{
+        position: relative;
+        top: 20px;
         display: inline-block;
         width: 220px;
         height: 45px;
@@ -188,6 +179,16 @@
         font-size: 20px;
         line-height: 45px;
         vertical-align: top;
+        .qq-logo{
+          position: absolute;
+          top: 5px;
+          left: 10px;
+          display: block;
+          width: 35px;
+          height: 35px;
+          background: url(../images/qq_logo.png) center center no-repeat;
+          background-size: cover;
+        }
       }
 
     }

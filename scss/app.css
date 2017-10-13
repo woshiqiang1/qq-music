@@ -465,18 +465,10 @@ ul, ol {
     background-size: cover; }
   #player .action {
     width: 100%;
-    margin-top: -20px;
     text-align: center; }
-    #player .action .qq-logo {
-      position: relative;
-      top: 40px;
-      left: 60px;
-      display: block;
-      width: 35px;
-      height: 35px;
-      background: url(../images/qq_logo.png) center center no-repeat;
-      background-size: cover; }
     #player .action .btn-download {
+      position: relative;
+      top: 20px;
       display: inline-block;
       width: 220px;
       height: 45px;
@@ -486,6 +478,15 @@ ul, ol {
       font-size: 20px;
       line-height: 45px;
       vertical-align: top; }
+      #player .action .btn-download .qq-logo {
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        display: block;
+        width: 35px;
+        height: 35px;
+        background: url(../images/qq_logo.png) center center no-repeat;
+        background-size: cover; }
 
 .player-background {
   background: url(https://y.gtimg.cn/music/photo_new/T002R150x150M000004bsze91nxcUd.jpg?max_age=2592000);
