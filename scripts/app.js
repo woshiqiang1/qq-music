@@ -1,8 +1,8 @@
-import './tab'
-import {Recommend} from './recommend'
+import './tab.js'
+import {Recommend} from './recommend.js'
 import {TopList} from './toplist.js'
-import {Search} from './search'
-import {MusicPlayer} from './music_player'
+import {Search} from './search.js'
+import {MusicPlayer} from './music_player.js'
 
 
 let recommend = new Recommend(document.querySelector('#rec-view')).launch()
@@ -17,7 +17,7 @@ playerPull.addEventListener('click', (event) => {
 })
 
 onHashChange()//页面刷新立即读入参数
-addEventListener('hashchange', onHashChange)
+window.addEventListener('hashchange', onHashChange)
 
 
 function onHashChange() {

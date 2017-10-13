@@ -1,6 +1,6 @@
 import { Slider } from './slider.js'
 import { lazyload } from './lazyload.js'
-import { RECOMMEND_URL } from './constant'
+import { RECOMMEND_URL } from './constant.js'
 
 export class Recommend {
     constructor(el) {

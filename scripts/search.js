@@ -1,4 +1,4 @@
-import {searchUrl} from './helpers'
+import {searchUrl} from './helpers.js'
 export class Search {
     constructor(el) {
         this.$el = el

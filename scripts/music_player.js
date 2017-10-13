@@ -1,6 +1,6 @@
-import {LyricsPlayer} from './lyrics_player'
-import {ProgressBar} from './progress_bar'
-import {songUrl, albumCoverUrl, lyricsUrl} from './helpers'
+import {LyricsPlayer} from './lyrics_player.js'
+import {ProgressBar} from './progress_bar.js'
+import {songUrl, albumCoverUrl, lyricsUrl} from './helpers.js'
 
 export class MusicPlayer {
     constructor(el) {

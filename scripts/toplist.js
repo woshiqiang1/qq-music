@@ -1,5 +1,5 @@
-import {TOPLIST_URL} from './constant'
-import {lazyload} from './lazyload'
+import {TOPLIST_URL} from './constant.js'
+import {lazyload} from './lazyload.js'
 
 export class TopList {
     constructor(el) {
